@@ -1,0 +1,299 @@
+@import url("./reset.css");
+
+@keyframes animate {
+  0%,
+  100% {
+    transform: translateY(-40px);
+  }
+
+  50% {
+    transform: translateY(40px);
+  }
+}
+
+body {
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+/* wrapper */
+#wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 30px;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to bottom, #f1f4f9, #dff1ff);
+}
+
+.color {
+  position: absolute;
+  filter: blur(150px);
+  &:nth-child(1) {
+    top: -350px;
+    width: 1400px;
+    height: 1000px;
+    background: #cdb4db;
+  }
+  &:nth-child(2) {
+    bottom: -150px;
+    left: 100px;
+    width: 600px;
+    height: 600px;
+    background: #ffafcc;
+  }
+  &:nth-child(3) {
+    bottom: 50px;
+    right: 100px;
+    width: 800px;
+    height: 400px;
+    background: #a2d2ff;
+  }
+}
+
+.square {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  animation: animate 10s linear infinite;
+  animation-delay: calc(-1s * var(--i));
+  &:nth-child(1) {
+    top: -50px;
+    right: -60px;
+    width: 100px;
+    height: 100px;
+  }
+  &:nth-child(2) {
+    top: 150px;
+    left: -100px;
+    width: 120px;
+    height: 120px;
+    z-index: 2;
+  }
+  &:nth-child(3) {
+    bottom: 50px;
+    right: -60px;
+    width: 80px;
+    height: 80px;
+    z-index: 2;
+  }
+  &:nth-child(4) {
+    bottom: -80px;
+    left: 100px;
+    width: 50px;
+    height: 50px;
+  }
+  &:nth-child(5) {
+    top: -80px;
+    left: 140px;
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.error {
+  width: 100%;
+  color: #ff359b;
+  font-size: 11px;
+  padding: 5px 0 10px 0;
+}
+
+#logon {
+  width: 500px;
+  height: 760px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: relative;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+::placeholder {
+  color: white;
+}
+
+.inner_contents {
+  font-size: 14px;
+  color: white;
+  input,
+  select {
+    letter-spacing: 0.8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 35px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 16px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.title {
+  width: 423px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: white;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    width: 100px;
+    height: 4px;
+    background: white;
+  }
+}
+
+#calendar {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px 0 10px 0;
+}
+
+select {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+  width: 140px;
+  height: 40px;
+  font-size: 16px;
+  padding-left: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  option {
+    color: #666;
+  }
+  outline: none;
+  &:first-child {
+    border-radius: 35px 0 0 35px;
+  }
+  &:last-child {
+    border-radius: 0px 35px 35px 0px;
+  }
+}
+
+/* 부모요소가 flex로 잡혀져 있어 자식도 flex속성을 먹게됨. */
+.username #user {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0 10px;
+  padding-left: 12px;
+  font-size: 16px;
+  color: white;
+  &:focus {
+    outline: none;
+  }
+}
+
+.userPW #PW {
+  width: 100%;
+  height: 40px;
+  margin: 10px 0 10px;
+  padding-left: 12px;
+  font-size: 16px;
+  color: white;
+  &:focus {
+    outline: none;
+  }
+}
+
+#gender_btn {
+  margin: 10px 0 30px;
+  display: flex;
+
+  button {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    height: 50px;
+    color: #bdbebe;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.05);
+    &:first-child {
+      border-radius: 35px 0 0 35px;
+      /* 겹쳐서 보더를 하나만 있는 것처럼 주작 */
+      border-right: transparent;
+    }
+    &:last-child {
+      border-radius: 0px 35px 35px 0px;
+    }
+    i {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      padding: 10px;
+      border: 2px solid transparent;
+      border-radius: 100%;
+      &.filledA {
+        color: #ff359b;
+      }
+      &.filledB {
+        color: #00d2ff;
+      }
+    }
+  }
+}
+
+.check {
+  margin: 25px 0;
+  cursor: pointer;
+  input[type="checkbox"] {
+    scale: 2;
+    margin: 10px;
+    cursor: pointer;
+  }
+}
+
+a {
+  border-bottom: 1px solid white;
+}
+
+.btn input[type="submit"] {
+  width: 100%;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 600;
+  &:hover {
+    background-color: white;
+    color: #666;
+    font-weight: 600;
+  }
+}
+
+label {
+  cursor: pointer;
+}
